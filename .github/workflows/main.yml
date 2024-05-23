@@ -9,8 +9,8 @@ jobs:
         id: dbuild
         uses: docker/build-push-action@v5
         with:
-          push: false
-          tags: sauerborn-git/github-actions-test:latest
+          push: true
+          tags: ghcr.io/sauerborn-git/github-actions-test:latest
       #- name: Hello world action step
       #  #id: hello
       #  #uses: sauerborn-git/github-actions-test@main
