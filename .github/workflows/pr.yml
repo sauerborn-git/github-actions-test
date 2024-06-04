@@ -41,7 +41,7 @@ jobs:
           fi
 
       - name: Create new tag
-        uses: anothrNick/github-tag-action@v1.12.2
+        uses: anothrNick/github-tag-action@1.67.0
         with:
           tag: ${{ steps.bump_version.outputs.version }}
           message: 'New version'
