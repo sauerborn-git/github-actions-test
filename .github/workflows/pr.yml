@@ -29,7 +29,7 @@ jobs:
           export minor=$(echo ${{ steps.get_version.outputs.version }} | cut -d '.' -f 2)
           export patch=$(echo ${{ steps.get_version.outputs.version }} | cut -d '.' -f 3)
 
-          if [ -n "${{ github.event.pull_request.labels.find(x => x.name == 'major') }}" ]; then
+          if [ contains(github.event.pull_request.labels.*.name, 'major')]; then
             echo "version=${major}.0.0" >> $GITHUB_OUTPUT
           elif [ -n "${{ github.event.pull_request.labels.find(x => x.name == 'minor') }}" ]; then
             echo "version=${major}.${minor+1}.0" >> $GITHUB_OUTPUT
