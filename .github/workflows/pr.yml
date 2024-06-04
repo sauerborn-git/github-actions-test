@@ -22,8 +22,9 @@ jobs:
         id: get_version
         run: |
           export initialVersion="0.0.0"
+          export currentVersion=$(git describe --abbrev=0 --tags)
           # take current version if set, else take initial version
-          echo version=${$(git describe --abbrev=0 --tags):-$initialVersion} >> $GITHUB_OUTPUT
+          echo version=${currentVersion:-$initialVersion} >> $GITHUB_OUTPUT
 
       - name: Determine version type
         id: bump_version
