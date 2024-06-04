@@ -20,7 +20,10 @@ jobs:
 
       - name: Get current version
         id: get_version
-        run: echo version=$(git describe --abbrev=0 --tags) >> $GITHUB_OUTPUT
+        run: |
+          export initialVersion="0.0.0"
+          # take current version if set, else take initial version
+          echo version=${$(git describe --abbrev=0 --tags):-initialVersion} >> $GITHUB_OUTPUT
 
       - name: Determine version type
         id: bump_version
